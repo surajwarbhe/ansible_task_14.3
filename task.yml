@@ -1,0 +1,18 @@
+- hosts: all
+  vars_files:
+    - "{{ansible_facts['distribution']}}-{{ansible_facts['distribution_major_version']}}.yml" 
+  tasks:
+     - name: "Downloading httpd"
+       package:
+           name: "{{ package_name }}"
+           state: present
+   
+     - name: "starting httpd service"
+       service:
+           name: "{{ service_name }}"
+           state: started
+       
+     - name: "Coping html pages"
+       copy:
+           dest: "/var/www/html"
+           src: "{{src_file}}"
