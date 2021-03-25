@@ -1,0 +1,3 @@
+package_name: httpd
+service_name: httpd
+src_file: redhat.html
